@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: xyrocron
+    environment:
+      POSTGRES_DB: xyrocron
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:
+    ports:
+      - "3454:5432"
+    user: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1s
+      timeout: 1s
+      retries: 5
